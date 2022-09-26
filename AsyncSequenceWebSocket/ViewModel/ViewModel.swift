@@ -30,6 +30,8 @@ final class ViewModel: ObservableObject {
             }
         }
     }
+
+    func post() {
         let post = Post(action: "sendMessage", message: "hello, is anyone there?")
         client.send(request: post)
     }
