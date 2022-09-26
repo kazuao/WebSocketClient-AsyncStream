@@ -30,4 +30,12 @@ final class ViewModel: ObservableObject {
             }
         }
     }
+        let post = Post(action: "sendMessage", message: "hello, is anyone there?")
+        client.send(request: post)
+    }
+}
+
+struct Post: Codable {
+    let action: String
+    let message: String
 }

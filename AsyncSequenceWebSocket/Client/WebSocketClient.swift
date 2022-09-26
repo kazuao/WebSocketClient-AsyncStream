@@ -31,6 +31,7 @@ final class WebSocketClient: NSObject {
                             guard let data = json.data(using: .utf8) else {
                                 throw WebSocketError.invalidFormat
                             }
+                            print("json:", json)
                             continuation.yield(try JSONDecoder().decode(ResponseEntity.self, from: data))
 
                         case .data:
@@ -71,6 +72,7 @@ private extension WebSocketClient {
         let session = URLSession(configuration: .default, delegate: self, delegateQueue: OperationQueue())
 
         let request: URLRequest = {
+            print(url)
             var request = URLRequest(url: URL(string: url)!)
             request.timeoutInterval = 5
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
